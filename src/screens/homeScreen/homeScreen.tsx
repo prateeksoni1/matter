@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from "react";
 import classes from "./homeScreen.module.scss";
-import Navbar from "../../components/navbar/navbar";
 
 const HomeScreen: FunctionComponent = () => {
   return (
     <div className={classes.home}>
-      <Navbar />
       <div className={classes.hero}>
         <div className={classes.darken}>
           <div className={classes.heroText}>
