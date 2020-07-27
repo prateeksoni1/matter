@@ -1,0 +1,17 @@
+$colors: (
+  bg: #1b262c,
+  primary: #3282b8,
+);
+
+html {
+  font-size: 16px;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans";
+}
