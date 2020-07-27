@@ -1,20 +1,11 @@
 import React, { FunctionComponent } from "react";
 import classes from "./homeScreen.module.scss";
+import Navbar from "../../components/navbar/navbar";
 
 const HomeScreen: FunctionComponent = () => {
   return (
     <div className={classes.home}>
-      <nav>
-        <div className={classes.column}>
-          <div className={classes.navContainer}>
-            <div className={classes.logo}>matter</div>
-            <div className={classes.menu}>
-              <div className={classes.menuItem}>login</div>
-              <div className={classes.menuItem}>register</div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
       <div className={classes.hero}>
         <div className={classes.darken}>
           <div className={classes.heroText}>

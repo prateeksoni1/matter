@@ -1,0 +1,28 @@
+@import "../../styles/index.scss";
+
+.nav {
+  background-color: inherit;
+  position: fixed;
+  left: 0;
+  right: 0;
+  color: #fff;
+  padding: 1rem;
+
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    text-transform: uppercase;
+  }
+
+  .menu {
+    display: flex;
+
+    .menuItem {
+      margin-left: 2rem;
+    }
+  }
+}
