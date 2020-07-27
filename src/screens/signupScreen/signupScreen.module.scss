@@ -1,0 +1,68 @@
+@import "../../index.scss";
+@import "../../styles/index.scss";
+
+.signup {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .darken {
+    min-height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: center;
+    text-align: center;
+
+    h1 {
+      text-transform: uppercase;
+      max-width: 70%;
+      letter-spacing: 0.2rem;
+      font-family: Montserrat;
+      margin: 0;
+      font-weight: normal;
+      padding: 2rem;
+      font-size: 5rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  .wall {
+    background-image: url("../../assets/images/create-project.jpg");
+    background-size: cover;
+  }
+  .container {
+    min-height: 100vh;
+    background-color: map-get($colors, bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    h1 {
+      font-family: Montserrat;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    form {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 2rem;
+
+      .btn {
+        margin-top: 2rem;
+        width: 100%;
+      }
+    }
+  }
+}
