@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
-import classes from "./app.module.scss";
+import classes from "./homeScreen.module.scss";
 
-const App: FunctionComponent = () => {
+const HomeScreen: FunctionComponent = () => {
   return (
-    <div className={classes.app}>
+    <div className={classes.home}>
       <nav>
         <div className={classes.column}>
           <div className={classes.navContainer}>
@@ -30,4 +30,4 @@ const App: FunctionComponent = () => {
   );
 };
 
-export default App;
+export default HomeScreen;

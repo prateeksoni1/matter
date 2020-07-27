@@ -1,7 +1,7 @@
-@import "../index.scss";
-@import "../styles/index.scss";
+@import "../../index.scss";
+@import "../../styles/index.scss";
 
-.app {
+.home {
   nav {
     background-color: inherit;
     position: fixed;
@@ -31,7 +31,7 @@
 
   .hero {
     min-height: 100vh;
-    background-image: url("../assets/images/hero-bg.jpg");
+    background-image: url("../../assets/images/hero-bg.jpg");
     background-size: cover;
     color: #fff;
 
