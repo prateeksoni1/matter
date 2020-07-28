@@ -1,11 +1,18 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 import Routes from "../routes/routes";
+import ProfileContext from "../../contexts/profileContext";
 
 const App: FunctionComponent = () => {
+  const [fields, setFields] = useState({
+    name: "",
+    username: "",
+    organization: "",
+  });
+
   return (
-    <div>
+    <ProfileContext.Provider value={{ ...fields, setFields }}>
       <Routes />
-    </div>
+    </ProfileContext.Provider>
   );
 };
 

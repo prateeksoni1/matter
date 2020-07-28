@@ -23,7 +23,7 @@ export type StepProps = {
   validationSchema: Yup.ObjectSchema<SignupValues | ProfileValues>;
   head: string;
   bg: ImageBitmap;
-  handleSubmit(values: SignupValues): void;
+  handleSubmit(values: SignupValues | ProfileValues): void;
   formHead: string;
   inputs: Array<InputProps>;
 };

@@ -1,10 +1,12 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import { SignupValues, ProfileValues } from "../../types";
 import Step from "../../components/step/step";
 import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
 import * as Yup from "yup";
 import api from "../../api";
+import profileContext from "../../contexts/profileContext";
+import { profile } from "console";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -23,6 +25,8 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
+  const profileData = useContext(profileContext);
+
   const validationSchema: Yup.ObjectSchema<ProfileValues> = Yup.object({
     name: Yup.string().required().min(4),
     username: Yup.string()
@@ -41,10 +45,16 @@ const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
     isOwner: Yup.boolean(),
   }).defined();
 
-  const handleSubmit = async (values: SignupValues) => {
-    console.log(values);
-    // const { name, username } = values;
-    // await api.post("/api/auth/signup", { email, password });
+  const handleSubmit = async (values: ProfileValues) => {
+    if (profileData.setFields) {
+      profileData.setFields((state) => ({
+        ...state,
+        name: values.name,
+        username: values.username,
+      }));
+    }
+
+    if (values.isOwner) props.history.push("/create-organization");
   };
 
   return (
