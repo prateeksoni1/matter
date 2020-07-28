@@ -1,41 +1,45 @@
-import React, { FunctionComponent } from "react";
-import { Formik, Form, Field, FormikValues } from "formik";
-import classes from "./signupScreen.module.scss";
-import Input from "../../components/input/input";
+import React, { FunctionComponent, useState } from "react";
+import { FormikValues } from "formik";
+import Step from "./step/step";
+import { InputProps } from "../../types";
+import { RouteComponentProps } from "react-router-dom";
 
-const SignupScreen: FunctionComponent = () => {
+const stepInputs: Array<InputProps> = [
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+  },
+  {
+    name: "password",
+    label: "Password",
+    type: "password",
+  },
+  {
+    name: "confirmPassword",
+    label: "Confirm Password",
+    type: "password",
+  },
+];
+
+const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
+  const [step, setStep] = useState(1);
+
   const handleSubmit = (values: FormikValues) => {
     console.log(values);
   };
 
-  return (
-    <div className={classes.signup}>
-      <div className={classes.wall}>
-        <div className={classes.darken}>
-          <h1>The only management app you'll ever need.</h1>
-        </div>
-      </div>
-      <div className={classes.container}>
-        <h1>Sign up to Matter</h1>
-        <Formik
-          initialValues={{ email: "", password: "", confirmPassword: "" }}
-          onSubmit={handleSubmit}
-        >
-          <Form>
-            <Input name="email" label="Email" />
-            <Input name="password" label="Password" />
-            <Input name="confirmPassword" label="Confirm Password" />
-            <button
-              className={[classes.buttonPrimary, classes.btn].join(" ")}
-              type="submit"
-            >
-              Continue
-            </button>
-          </Form>
-        </Formik>
-      </div>
-    </div>
-  );
+  if (step === 1)
+    return (
+      <Step
+        head="The only management app you'll ever need."
+        formHead="Sign up to Matter"
+        handleSubmit={handleSubmit}
+        inputs={stepInputs}
+      />
+    );
+
+  return null;
 };
 
 export default SignupScreen;

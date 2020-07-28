@@ -1,23 +1,13 @@
 import React, { FunctionComponent } from "react";
-import {
-  BrowserRouter,
-  Route,
-  RouteProps,
-  Switch,
-  RouteComponentProps,
-} from "react-router-dom";
+import { BrowserRouter, Route, RouteProps, Switch } from "react-router-dom";
 import HomeScreen from "../../screens/homeScreen/homeScreen";
 import SignupScreen from "../../screens/signupScreen/signupScreen";
 
-interface myRouteProps extends Omit<RouteProps, "component"> {
-  component: React.FunctionComponent<RouteComponentProps>;
-}
-
-const PublicRoute: FunctionComponent<myRouteProps> = ({
+const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  return <Route {...rest} render={Component} />;
+  return <Route {...rest} component={Component} />;
 };
 
 const Routes: FunctionComponent = () => {
