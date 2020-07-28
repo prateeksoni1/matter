@@ -1,8 +1,10 @@
-import React, { FunctionComponent, useState } from "react";
-import { FormikValues } from "formik";
+import React, { FunctionComponent } from "react";
+import { SignupValues } from "../../types";
 import Step from "../../components/step/step";
 import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
+import * as Yup from "yup";
+import api from "../../api";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -23,8 +25,21 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
-  const handleSubmit = (values: FormikValues) => {
-    console.log(values);
+  const validationSchema: Yup.ObjectSchema<SignupValues> = Yup.object({
+    email: Yup.string().email().defined(),
+    password: Yup.string().min(6).defined(),
+    confirmPassword: Yup.string()
+      .min(6, "Passwords do not match")
+      .defined()
+      .test("password-match", "Passwords do not match", function (value) {
+        return this.parent.password === value;
+      }),
+  }).defined();
+
+  const handleSubmit = async (values: SignupValues) => {
+    const { email, password } = values;
+    await api.post("/api/auth/signup", { email, password });
+    props.history.push("/create-profile");
   };
 
   return (
@@ -34,6 +49,8 @@ const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
       formHead="Sign up to Matter"
       handleSubmit={handleSubmit}
       inputs={stepInputs}
+      validationSchema={validationSchema}
+      initialValues={{ email: "", password: "", confirmPassword: "" }}
     />
   );
 };

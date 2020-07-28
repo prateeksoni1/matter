@@ -5,6 +5,8 @@ import Input from "./input/input";
 import { StepProps } from "../../types";
 
 const Step: FunctionComponent<StepProps> = ({
+  initialValues,
+  validationSchema,
   bg,
   head,
   handleSubmit,
@@ -21,13 +23,14 @@ const Step: FunctionComponent<StepProps> = ({
       <div className={classes.container}>
         <h1>{formHead}</h1>
         <Formik
-          initialValues={{ email: "", password: "", confirmPassword: "" }}
+          initialValues={initialValues}
           onSubmit={handleSubmit}
+          validationSchema={validationSchema}
         >
           <Form>
             {React.Children.toArray(
               inputs.map((item) => (
-                <Input name={item.name} label={item.label} />
+                <Input name={item.name} label={item.label} type={item.type} />
               ))
             )}
 
