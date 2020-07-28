@@ -8,6 +8,7 @@ export type InputProps = {
 
 export type StepProps = {
   head: string;
+  bg: ImageBitmap;
   handleSubmit(values: FormikValues): void;
   formHead: string;
   inputs: Array<InputProps>;

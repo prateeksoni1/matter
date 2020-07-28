@@ -2,9 +2,10 @@ import React, { FunctionComponent } from "react";
 import { Formik, Form } from "formik";
 import classes from "./step.module.scss";
 import Input from "./input/input";
-import { StepProps } from "../../../types";
+import { StepProps } from "../../types";
 
 const Step: FunctionComponent<StepProps> = ({
+  bg,
   head,
   handleSubmit,
   formHead,
@@ -12,7 +13,7 @@ const Step: FunctionComponent<StepProps> = ({
 }) => {
   return (
     <div className={classes.step}>
-      <div className={classes.wall}>
+      <div className={classes.wall} style={{ backgroundImage: `url(${bg})` }}>
         <div className={classes.darken}>
           <h1>{head}</h1>
         </div>

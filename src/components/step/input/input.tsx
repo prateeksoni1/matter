@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import classes from "./input.module.scss";
 import { Field } from "formik";
-import { InputProps } from "../../../../types";
+import { InputProps } from "../../../types";
 
 const Input: FunctionComponent<InputProps> = (props) => {
   return (

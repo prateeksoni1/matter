@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { FormikValues } from "formik";
-import Step from "./step/step";
+import Step from "../../components/step/step";
 import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
 
@@ -23,23 +23,19 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
-  const [step, setStep] = useState(1);
-
   const handleSubmit = (values: FormikValues) => {
     console.log(values);
   };
 
-  if (step === 1)
-    return (
-      <Step
-        head="The only management app you'll ever need."
-        formHead="Sign up to Matter"
-        handleSubmit={handleSubmit}
-        inputs={stepInputs}
-      />
-    );
-
-  return null;
+  return (
+    <Step
+      bg={require("../../assets/images/create-project.jpg")}
+      head="The only management app you'll ever need."
+      formHead="Sign up to Matter"
+      handleSubmit={handleSubmit}
+      inputs={stepInputs}
+    />
+  );
 };
 
 export default SignupScreen;
