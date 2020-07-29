@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useContext } from "react";
-import { SignupValues, ProfileValues } from "../../types";
+import { ProfileValues } from "../../types";
 import Step from "../../components/step/step";
 import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
 import * as Yup from "yup";
 import api from "../../api";
-import profileContext from "../../contexts/profileContext";
-import { profile } from "console";
+import CreateUserContext from "../../contexts/createUserContext";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -25,7 +24,7 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
-  const profileData = useContext(profileContext);
+  const profileData = useContext(CreateUserContext);
 
   const validationSchema: Yup.ObjectSchema<ProfileValues> = Yup.object({
     name: Yup.string().required().min(4),

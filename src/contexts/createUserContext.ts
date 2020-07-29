@@ -1,13 +1,13 @@
 import { createContext, Dispatch } from "react";
 
-export type ProfileType = {
+export type CreateProfileType = {
   name: string;
   username: string;
   organization: string;
-  setFields?: Dispatch<React.SetStateAction<ProfileType>>;
+  setFields?: Dispatch<React.SetStateAction<CreateProfileType>>;
 };
 
-export default createContext<ProfileType>({
+export default createContext<CreateProfileType>({
   name: "",
   username: "",
   organization: "",

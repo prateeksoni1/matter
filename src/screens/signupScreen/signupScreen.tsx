@@ -1,10 +1,11 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import { SignupValues } from "../../types";
 import Step from "../../components/step/step";
 import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
 import * as Yup from "yup";
 import api from "../../api";
+import profileContext from "../../contexts/userContext";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -25,6 +26,8 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
+  const profileData = useContext(profileContext);
+
   const validationSchema: Yup.ObjectSchema<SignupValues> = Yup.object({
     email: Yup.string().email().defined(),
     password: Yup.string().min(6).defined(),
@@ -38,8 +41,16 @@ const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
 
   const handleSubmit = async (values: SignupValues) => {
     const { email, password } = values;
-    await api.post("/api/auth/signup", { email, password });
-    props.history.push("/create-profile");
+    try {
+      await api.post("/api/auth/signup", { email, password });
+      const res = await api.post("/api/auth/login", { email, password });
+
+      profileData.setUser(res.data.user);
+
+      props.history.push("/create-profile");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
