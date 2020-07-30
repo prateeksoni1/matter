@@ -44,8 +44,9 @@ const SignupScreen: FunctionComponent<RouteComponentProps> = (props) => {
     try {
       await api.post("/api/auth/signup", { email, password });
       const res = await api.post("/api/auth/login", { email, password });
-
+      console.log(res.data);
       profileData.setUser(res.data.user);
+      localStorage.setItem("token", res.data.token);
 
       props.history.push("/create-profile");
     } catch (err) {
