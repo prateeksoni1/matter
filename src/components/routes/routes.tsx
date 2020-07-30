@@ -21,6 +21,13 @@ const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
   ...rest
 }) => {
+  const userData = useContext(userContext);
+
+  if (userData.user) {
+    if (userData.user.profile) return <Redirect to="/dashboard" />;
+
+    return <Redirect to="/create-profile" />;
+  }
   return <Route {...rest} component={Component} />;
 };
 
@@ -28,9 +35,9 @@ const PrivateRoute: FunctionComponent<RouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  const profileData = useContext(userContext);
+  const userData = useContext(userContext);
 
-  if (profileData.user) {
+  if (userData.user) {
     return <Route {...rest} component={Component} />;
   } else {
     return <Redirect to="/" />;
@@ -56,7 +63,7 @@ const Routes: FunctionComponent = () => {
       }
     };
     fetchUser();
-  }, [userData]);
+  }, []);
 
   if (loading) return null;
 
