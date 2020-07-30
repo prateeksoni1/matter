@@ -19,6 +19,7 @@ import userContext from "../../contexts/userContext";
 import CreateOrganizationScreen from "../../screens/createOrganizationScreen/createOrganizationScreen";
 import SetOrganizationScreen from "../../screens/setOrganizationScreen/setOrganizationScreen";
 import DashboardScreen from "../../screens/dashboardScreen/dashboardScreen";
+import LoginScreen from "../../screens/loginScreen/loginScreen";
 
 const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
@@ -84,6 +85,7 @@ const Routes: FunctionComponent = () => {
           component={SetOrganizationScreen}
         />
         <PublicRoute path="/signup" component={SignupScreen} />
+        <PublicRoute path="/login" component={LoginScreen} />
         <PublicRoute path="/" exact component={HomeScreen} />
       </Switch>
     </BrowserRouter>

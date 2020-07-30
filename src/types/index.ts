@@ -18,15 +18,24 @@ export type SignupValues = {
   confirmPassword: string;
 };
 
+export type LoginValues = {
+  email: string;
+  password: string;
+};
+
 export type StepProps = {
   initialValues?: any;
   validationSchema?: Yup.ObjectSchema<
-    SignupValues | ProfileValues | CreateOrganizationValues
+    SignupValues | ProfileValues | CreateOrganizationValues | LoginValues
   >;
   head: string;
   bg: ImageBitmap;
   handleSubmit?(
-    values: SignupValues | ProfileValues | CreateOrganizationValues
+    values:
+      | SignupValues
+      | ProfileValues
+      | CreateOrganizationValues
+      | LoginValues
   ): void;
   handleClick?(): void;
   formHead: string;
