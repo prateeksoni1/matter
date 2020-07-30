@@ -18,6 +18,7 @@ import api from "../../api";
 import userContext from "../../contexts/userContext";
 import CreateOrganizationScreen from "../../screens/createOrganizationScreen/createOrganizationScreen";
 import SetOrganizationScreen from "../../screens/setOrganizationScreen/setOrganizationScreen";
+import DashboardScreen from "../../screens/dashboardScreen/dashboardScreen";
 
 const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
@@ -72,6 +73,7 @@ const Routes: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <PrivateRoute path="/dashboard" component={DashboardScreen} />
         <PrivateRoute path="/create-profile" component={CreateProfileScreen} />
         <PrivateRoute
           path="/create-organization"
