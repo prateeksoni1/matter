@@ -19,15 +19,16 @@ export type SignupValues = {
 };
 
 export type StepProps = {
-  initialValues: any;
-  validationSchema: Yup.ObjectSchema<
+  initialValues?: any;
+  validationSchema?: Yup.ObjectSchema<
     SignupValues | ProfileValues | CreateOrganizationValues
   >;
   head: string;
   bg: ImageBitmap;
-  handleSubmit(
+  handleSubmit?(
     values: SignupValues | ProfileValues | CreateOrganizationValues
   ): void;
+  handleClick?(): void;
   formHead: string;
   inputs: Array<InputProps>;
 };

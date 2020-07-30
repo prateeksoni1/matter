@@ -5,6 +5,7 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 3fr 1fr;
+  box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -18,6 +19,7 @@
     color: #fff;
     justify-content: center;
     text-align: center;
+    box-sizing: border-box;
 
     h1 {
       text-transform: uppercase;
@@ -39,6 +41,8 @@
     background-size: cover;
   }
   .container {
+    box-sizing: border-box;
+
     min-height: 100vh;
     background-color: map-get($colors, bg);
     display: flex;
@@ -59,11 +63,10 @@
     form {
       box-sizing: border-box;
       width: 100%;
-
-      .btn {
-        margin-top: 2rem;
-        width: 100%;
-      }
+    }
+    .btn {
+      margin-top: 2rem;
+      width: 100%;
     }
   }
 }

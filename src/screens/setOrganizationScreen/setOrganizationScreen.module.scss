@@ -1,0 +1,52 @@
+@import "../../index.scss";
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+  }
+
+  input {
+    font-family: "Open Sans";
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: #2f424d;
+    color: #fff;
+    width: 100%;
+    padding: 0.5rem;
+
+    &:focus {
+      outline: 3px solid map-get($colors, primary);
+      background-color: #0f4c75;
+    }
+  }
+
+  .card {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: inherit;
+    color: #fff;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    outline: none;
+    font-family: "Open Sans";
+    box-shadow: 2px 3px 9px -3px rgba(0, 0, 0, 0.75);
+
+    &:hover {
+      cursor: pointer;
+      background-color: map-get($colors, primary);
+    }
+
+    &:focus {
+      background-color: #0f4c75;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import Input from "./input/input";
 import { StepProps } from "../../types";
 
 const Step: FunctionComponent<StepProps> = ({
+  handleClick,
   initialValues,
   validationSchema,
   bg,
@@ -23,26 +24,38 @@ const Step: FunctionComponent<StepProps> = ({
       </div>
       <div className={classes.container}>
         <h1>{formHead}</h1>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <Form>
-            {React.Children.toArray(
-              inputs.map((item) => (
-                <Input name={item.name} label={item.label} type={item.type} />
-              ))
-            )}
+        {inputs.length > 0 ? (
+          <Formik
+            initialValues={initialValues}
+            onSubmit={handleSubmit ? handleSubmit : (_) => null}
+            validationSchema={validationSchema}
+          >
+            <Form>
+              {React.Children.toArray(
+                inputs.map((item) => (
+                  <Input name={item.name} label={item.label} type={item.type} />
+                ))
+              )}
+              {children}
+              <button
+                className={[classes.buttonPrimary, classes.btn].join(" ")}
+                type="submit"
+              >
+                Continue
+              </button>
+            </Form>
+          </Formik>
+        ) : (
+          <div>
             {children}
             <button
               className={[classes.buttonPrimary, classes.btn].join(" ")}
-              type="submit"
+              onClick={handleClick}
             >
               Continue
             </button>
-          </Form>
-        </Formik>
+          </div>
+        )}
       </div>
     </div>
   );

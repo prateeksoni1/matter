@@ -55,6 +55,7 @@ const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
     }
 
     if (values.isOwner) props.history.push("/create-organization");
+    else props.history.push("/set-organization");
   };
 
   return (
