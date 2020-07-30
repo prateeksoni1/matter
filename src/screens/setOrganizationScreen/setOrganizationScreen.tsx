@@ -1,9 +1,6 @@
 import React, { FunctionComponent, useContext, useState } from "react";
-import { SignupValues } from "../../types";
 import Step from "../../components/step/step";
-import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
-import * as Yup from "yup";
 import api from "../../api";
 import profileContext from "../../contexts/createProfileContext";
 import classes from "./setOrganizationScreen.module.scss";
