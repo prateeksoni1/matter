@@ -5,7 +5,7 @@ import { InputProps } from "../../types";
 import { RouteComponentProps } from "react-router-dom";
 import * as Yup from "yup";
 import api from "../../api";
-import CreateUserContext from "../../contexts/createUserContext";
+import CreateProfileContext from "../../contexts/createProfileContext";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -24,7 +24,7 @@ const stepInputs: Array<InputProps> = [
 ];
 
 const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
-  const profileData = useContext(CreateUserContext);
+  const profileData = useContext(CreateProfileContext);
 
   const validationSchema: Yup.ObjectSchema<ProfileValues> = Yup.object({
     name: Yup.string().required().min(4),
@@ -41,7 +41,7 @@ const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
           return false;
         }
       }),
-    isOwner: Yup.boolean(),
+    isOwner: Yup.boolean().defined(),
   }).defined();
 
   const handleSubmit = async (values: ProfileValues) => {
@@ -50,6 +50,7 @@ const CreateProfileScreen: FunctionComponent<RouteComponentProps> = (props) => {
         ...state,
         name: values.name,
         username: values.username,
+        isOwner: values.isOwner,
       }));
     }
 

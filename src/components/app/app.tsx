@@ -1,22 +1,23 @@
 import React, { FunctionComponent, useState } from "react";
 import Routes from "../routes/routes";
-import CreateProfileContext from "../../contexts/createUserContext";
-import ProfileContext from "../../contexts/userContext";
+import CreateProfileContext from "../../contexts/createProfileContext";
+import UserContext from "../../contexts/userContext";
 
 const App: FunctionComponent = () => {
   const [fields, setFields] = useState({
     name: "",
     username: "",
     organization: "",
+    isOwner: false,
   });
 
   const [user, setUser] = useState();
 
   return (
     <CreateProfileContext.Provider value={{ ...fields, setFields }}>
-      <ProfileContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Routes />
-      </ProfileContext.Provider>
+      </UserContext.Provider>
     </CreateProfileContext.Provider>
   );
 };

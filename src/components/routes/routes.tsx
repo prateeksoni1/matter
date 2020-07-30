@@ -16,6 +16,7 @@ import SignupScreen from "../../screens/signupScreen/signupScreen";
 import CreateProfileScreen from "../../screens/createProfileScreen/createProfileScreen";
 import api from "../../api";
 import userContext from "../../contexts/userContext";
+import CreateOrganizationScreen from "../../screens/createOrganizationScreen/createOrganizationScreen";
 
 const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
@@ -71,6 +72,10 @@ const Routes: FunctionComponent = () => {
     <BrowserRouter>
       <Switch>
         <PrivateRoute path="/create-profile" component={CreateProfileScreen} />
+        <PrivateRoute
+          path="/create-organization"
+          component={CreateOrganizationScreen}
+        />
         <PublicRoute path="/signup" component={SignupScreen} />
         <PublicRoute path="/" exact component={HomeScreen} />
       </Switch>

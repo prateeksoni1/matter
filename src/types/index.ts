@@ -9,7 +9,7 @@ export type InputProps = {
 export type ProfileValues = {
   name: string;
   username: string;
-  isOwner?: boolean;
+  isOwner: boolean;
 };
 
 export type SignupValues = {
@@ -20,10 +20,18 @@ export type SignupValues = {
 
 export type StepProps = {
   initialValues: any;
-  validationSchema: Yup.ObjectSchema<SignupValues | ProfileValues>;
+  validationSchema: Yup.ObjectSchema<
+    SignupValues | ProfileValues | CreateOrganizationValues
+  >;
   head: string;
   bg: ImageBitmap;
-  handleSubmit(values: SignupValues | ProfileValues): void;
+  handleSubmit(
+    values: SignupValues | ProfileValues | CreateOrganizationValues
+  ): void;
   formHead: string;
   inputs: Array<InputProps>;
+};
+
+export type CreateOrganizationValues = {
+  name: string;
 };

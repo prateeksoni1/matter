@@ -12,6 +12,7 @@ const Step: FunctionComponent<StepProps> = ({
   handleSubmit,
   formHead,
   inputs,
+  children,
 }) => {
   return (
     <div className={classes.step}>
@@ -33,7 +34,7 @@ const Step: FunctionComponent<StepProps> = ({
                 <Input name={item.name} label={item.label} type={item.type} />
               ))
             )}
-
+            {children}
             <button
               className={[classes.buttonPrimary, classes.btn].join(" ")}
               type="submit"
