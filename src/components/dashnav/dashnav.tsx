@@ -14,7 +14,9 @@ const DashNav: FunctionComponent = () => {
     <nav className={classes.nav}>
       <div className={classes.navContainer}>
         <div className={classes.logo}>matter</div>
-        <div className={classes.user}>{user.user.profile.username}</div>
+        <div className={classes.user}>
+          {user.user.profile && user.user.profile.username}
+        </div>
 
         <div
           className={[classes.menu, classes.btn].join(" ")}

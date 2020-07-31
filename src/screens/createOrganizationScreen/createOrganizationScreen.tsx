@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import api from "../../api";
 import CreateProfileContext from "../../contexts/createProfileContext";
 import classes from "./createOrganizationScreen.module.scss";
+import userContext, { userType } from "../../contexts/userContext";
 
 const stepInputs: Array<InputProps> = [
   {
@@ -19,6 +20,7 @@ const CreateOrganizationScreen: FunctionComponent<RouteComponentProps> = (
   props
 ) => {
   const profileData = useContext(CreateProfileContext);
+  const user = useContext(userContext);
 
   const [rows, setRows] = useState<
     Array<{
@@ -43,7 +45,7 @@ const CreateOrganizationScreen: FunctionComponent<RouteComponentProps> = (
           ...user,
           organization: res.data.organization._id,
         }));
-        await api.post(
+        const profileRes = await api.post(
           "/api/profile",
           {
             name: profileData.name,
@@ -55,7 +57,10 @@ const CreateOrganizationScreen: FunctionComponent<RouteComponentProps> = (
             headers: { token: localStorage.getItem("token") },
           }
         );
-
+        user.setUser((data: userType) => ({
+          ...data,
+          profile: profileRes.data.profile,
+        }));
         props.history.push("/dashboard");
       }
     } catch (err) {

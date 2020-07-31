@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useContext,
+} from "react";
 import { RouteComponentProps } from "react-router-dom";
 import Step from "../../components/step/step";
 import api from "../../api";
@@ -6,8 +11,11 @@ import classes from "./setRolesScreen.module.scss";
 import { OptionTypeBase } from "react-select";
 import AsyncSelect from "react-select/async";
 import DashNav from "../../components/dashnav/dashnav";
+import createProjectContext from "../../contexts/createProjectContext";
 
 const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
+  const project = useContext(createProjectContext);
+
   const [contributors, setContributors] = useState<
     Array<{ role: string; name: string; id: string }>
   >([]);
@@ -24,9 +32,25 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
     fetchData();
   }, []);
 
-  const handleInput = (value: any) => {
-    console.log({ value });
+  const handleSubmit = async () => {
+    const contributorIds = contributors.map((ct) => ({
+      profile: ct.id,
+      role: ct.role,
+    }));
 
+    await api.post(
+      "/api/project",
+      {
+        projectName: project.name,
+        description: project.description,
+        contributors: contributorIds,
+      },
+      { headers: { token: localStorage.getItem("token") } }
+    );
+    props.history.push("/dashboard");
+  };
+
+  const handleInput = (value: any) => {
     if (contributors.find((ct) => ct.id === value.value)) {
       return;
     }
@@ -56,6 +80,16 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
     callback(await handleChange(inputValue));
   };
 
+  const handleChangeRole = (value: string, index: number) => {
+    setContributors((ct) => {
+      const newCt = ct[index];
+      newCt.role = value;
+
+      ct[index] = newCt;
+      return ct;
+    });
+  };
+
   return (
     <>
       <DashNav />
@@ -64,6 +98,7 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
         bg={require("../../assets/images/hero-bg.jpg")}
         formHead="Add Project Contributors and Roles"
         head="Almost there"
+        handleClick={handleSubmit}
       >
         <div className={classes.search}>
           {/* <input
@@ -80,11 +115,16 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
           />
         </div>
         {React.Children.toArray(
-          contributors.map((ct) => (
+          contributors.map((ct, i) => (
             <div className={classes.contributor}>
-              <select name="role">
+              <select
+                name="role"
+                onChange={(e) => handleChangeRole(e.target.value, i)}
+              >
                 {roles.map((role) => (
-                  <option value={role}>{role}</option>
+                  <option value={role} selected={false}>
+                    {role}
+                  </option>
                 ))}
               </select>
               <label>{ct.name}</label>

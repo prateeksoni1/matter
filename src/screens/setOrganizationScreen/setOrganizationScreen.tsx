@@ -4,11 +4,13 @@ import { RouteComponentProps } from "react-router-dom";
 import api from "../../api";
 import profileContext from "../../contexts/createProfileContext";
 import classes from "./setOrganizationScreen.module.scss";
+import userContext, { userType } from "../../contexts/userContext";
 
 const SetOrganizationScreen: FunctionComponent<RouteComponentProps> = (
   props
 ) => {
   const profileData = useContext(profileContext);
+  const user = useContext(userContext);
 
   const [results, setResults] = useState<Array<any>>([]);
   const [organization, setOrganization] = useState<string>();
@@ -22,7 +24,7 @@ const SetOrganizationScreen: FunctionComponent<RouteComponentProps> = (
 
   const handleSubmit = async () => {
     try {
-      await api.post(
+      const profileRes = await api.post(
         "/api/profile",
         {
           name: profileData.name,
@@ -34,7 +36,10 @@ const SetOrganizationScreen: FunctionComponent<RouteComponentProps> = (
           headers: { token: localStorage.getItem("token") },
         }
       );
-
+      user.setUser((data: userType) => ({
+        ...data,
+        profile: profileRes.data.profile,
+      }));
       props.history.push("/dashboard");
     } catch (err) {
       console.log(err);

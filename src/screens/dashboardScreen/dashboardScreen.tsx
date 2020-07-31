@@ -19,7 +19,11 @@ const DashboardScreen: FunctionComponent<RouteComponentProps> = (props) => {
   }, []);
 
   const renderProjects = () => {
-    return React.Children.toArray(projects.map((proj) => <div>proj</div>));
+    return React.Children.toArray(
+      projects.map((proj: any) => (
+        <div className={classes.project}>{proj.projectName}</div>
+      ))
+    );
   };
 
   return (
