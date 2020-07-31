@@ -23,10 +23,19 @@ export type LoginValues = {
   password: string;
 };
 
+export type CreateProjectValues = {
+  name: string;
+  description: string;
+};
+
 export type StepProps = {
   initialValues?: any;
   validationSchema?: Yup.ObjectSchema<
-    SignupValues | ProfileValues | CreateOrganizationValues | LoginValues
+    | SignupValues
+    | ProfileValues
+    | CreateOrganizationValues
+    | LoginValues
+    | CreateProjectValues
   >;
   head: string;
   bg: ImageBitmap;
@@ -36,6 +45,7 @@ export type StepProps = {
       | ProfileValues
       | CreateOrganizationValues
       | LoginValues
+      | CreateProjectValues
   ): void;
   handleClick?(): void;
   formHead: string;

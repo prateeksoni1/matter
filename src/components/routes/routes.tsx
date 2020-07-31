@@ -20,6 +20,8 @@ import CreateOrganizationScreen from "../../screens/createOrganizationScreen/cre
 import SetOrganizationScreen from "../../screens/setOrganizationScreen/setOrganizationScreen";
 import DashboardScreen from "../../screens/dashboardScreen/dashboardScreen";
 import LoginScreen from "../../screens/loginScreen/loginScreen";
+import CreateProjectScreen from "../../screens/createProjectScreen/createProjectScreen";
+import SetRolesScreen from "../../screens/setRolesScreen/setRolesScreen";
 
 const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
@@ -75,7 +77,9 @@ const Routes: FunctionComponent = () => {
     <BrowserRouter>
       <Switch>
         <PrivateRoute path="/dashboard" component={DashboardScreen} />
+        <PrivateRoute path="/create-project" component={CreateProjectScreen} />
         <PrivateRoute path="/create-profile" component={CreateProfileScreen} />
+        <PrivateRoute path="/:projectName/roles" component={SetRolesScreen} />
         <PrivateRoute
           path="/create-organization"
           component={CreateOrganizationScreen}

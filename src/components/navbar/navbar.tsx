@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 const Navbar: FunctionComponent = () => {
   const history = useHistory();
-
   return (
     <nav className={classes.nav}>
       <div className={classes.column}>
@@ -19,7 +18,7 @@ const Navbar: FunctionComponent = () => {
             </div>
             <div
               className={classes.menuItem}
-              onClick={() => history.push("/register")}
+              onClick={() => history.push("/signup")}
             >
               register
             </div>

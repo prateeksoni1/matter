@@ -1,0 +1,44 @@
+@import "../../index.scss";
+
+.search {
+  position: relative;
+
+  input {
+    font-family: "Open Sans";
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: #2f424d;
+    color: #fff;
+    width: 100%;
+    padding: 0.5rem;
+
+    &:focus {
+      outline: 3px solid map-get($colors, primary);
+      background-color: #0f4c75;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+  }
+}
+.contributor {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+
+  select {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+
+    background-color: map-get($colors, primary);
+    color: #fff;
+  }
+}

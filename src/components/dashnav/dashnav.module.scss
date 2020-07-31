@@ -1,0 +1,46 @@
+@import "../../styles/index.scss";
+
+.nav {
+  background-color: #12191d;
+  position: sticky;
+  left: 0;
+  right: 0;
+  color: #fff;
+  padding: 1rem;
+
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .user {
+    margin-right: 2rem;
+  }
+
+  .menu {
+    display: flex;
+    .menuItem {
+      margin-left: 2rem;
+    }
+  }
+  .btn {
+    font-size: 1.2rem;
+    font-family: "Open Sans";
+    background-color: #8f0b0b;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+  }
+
+  .icon {
+    margin-left: 1rem;
+  }
+}

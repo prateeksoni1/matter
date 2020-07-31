@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+.screen {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+
+  h1 {
+    font-weight: normal;
+  }
+
+  .projectsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+
+    .newProjectBtn {
+      padding: 1rem;
+      height: 200px;
+      font-size: 2rem;
+      background-color: map-get($colors, primary);
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: "Montserrat";
+      font-weight: bold;
+    }
+  }
+}

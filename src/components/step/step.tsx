@@ -46,7 +46,7 @@ const Step: FunctionComponent<StepProps> = ({
             </Form>
           </Formik>
         ) : (
-          <div>
+          <div className={classes.width}>
             {children}
             <button
               className={[classes.buttonPrimary, classes.btn].join(" ")}
