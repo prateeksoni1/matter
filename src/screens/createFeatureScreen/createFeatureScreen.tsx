@@ -31,7 +31,7 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
       (ct: any) => ct.profile.username === user.user.profile.username
     )._id;
 
-    const res = await api.post("/api/project/task", {
+    await api.post("/api/project/task", {
       type: "FEATURE",
       permission: "create-task",
       assignedTo,

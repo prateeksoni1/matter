@@ -60,6 +60,7 @@ export type CreateOrganizationValues = {
 
 export type locationState = {
   project: any;
+  setRefresh?: any;
 };
 
 export type FeatureValues = {

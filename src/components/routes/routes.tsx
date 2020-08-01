@@ -24,6 +24,7 @@ import CreateProjectScreen from "../../screens/createProjectScreen/createProject
 import SetRolesScreen from "../../screens/setRolesScreen/setRolesScreen";
 import ProjectScreen from "../../screens/projectScreen/projectScreen";
 import CreateFeatureScreen from "../../screens/createFeatureScreen/createFeatureScreen";
+import CreateBugScreen from "../../screens/createBugScreen/createBugScreen";
 
 const PublicRoute: FunctionComponent<RouteProps> = ({
   component: Component,
@@ -84,6 +85,7 @@ const Routes: FunctionComponent = () => {
         <PrivateRoute path="/:projectName/roles" component={SetRolesScreen} />
         <PrivateRoute path="/project/:projectName" component={ProjectScreen} />
         <PrivateRoute path="/create-feature" component={CreateFeatureScreen} />
+        <PrivateRoute path="/create-bug" component={CreateBugScreen} />
         <PrivateRoute
           path="/create-organization"
           component={CreateOrganizationScreen}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import classes from "./projectScreen.module.scss";
 import DashNav from "../../components/dashnav/dashnav";
 import { RouteComponentProps } from "react-router-dom";
@@ -13,12 +13,19 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
 >> = (props) => {
   const { project } = props.location.state;
 
+  const [features, setFeatures] = useState([]);
+  const [bugs, setBugs] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
-      const res = await api.get("/api/project/tasks", {
+      let res = await api.get("/api/project/tasks", {
         params: { projectId: project._id, type: "FEATURE" },
       });
-      console.log(res);
+      setFeatures(res.data.features);
+      res = await api.get("/api/project/tasks", {
+        params: { projectId: project._id, type: "BUG" },
+      });
+      setBugs(res.data.bugs);
     };
     fetchData();
   }, [project._id]);
@@ -40,7 +47,7 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
           <h1>Bugs</h1>
           <button
             className={classes.newFeatureBtn}
-            onClick={() => props.history.push("/create-bug")}
+            onClick={() => props.history.push("/create-bug", { project })}
           >
             Create Bug
           </button>

@@ -10,7 +10,7 @@ import Step from "../../components/step/step";
 import api from "../../api";
 import userContext from "../../contexts/userContext";
 
-const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
+const CreateBugScreen: FunctionComponent<RouteComponentProps<
   {},
   StaticContext,
   locationState
@@ -31,7 +31,7 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
       (ct: any) => ct.profile.username === user.user.profile.username
     )._id;
 
-    const res = await api.post("/api/project/task", {
+    await api.post("/api/project/task", {
       type: "BUG",
       permission: "create-task",
       assignedTo,
@@ -39,7 +39,7 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
       ...values,
       projectId: project._id,
     });
-    console.log(res);
+    props.history.goBack();
   };
 
   const validationSchema = Yup.object()
@@ -63,7 +63,7 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
       <Step
         bg={require("../../assets/images/create-task.jpg")}
         head="Tasksssss"
-        formHead="Create A Feature"
+        formHead="Create A Bug"
         inputs={inputs}
         initialValues={{
           title: "",
@@ -104,4 +104,4 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
   );
 };
 
-export default CreateFeatureScreen;
+export default CreateBugScreen;
