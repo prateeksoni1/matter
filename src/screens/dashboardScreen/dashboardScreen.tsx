@@ -21,7 +21,16 @@ const DashboardScreen: FunctionComponent<RouteComponentProps> = (props) => {
   const renderProjects = () => {
     return React.Children.toArray(
       projects.map((proj: any) => (
-        <div className={classes.project}>{proj.projectName}</div>
+        <div
+          className={classes.project}
+          onClick={() =>
+            props.history.push(`/project/${proj.projectName}`, {
+              project: proj,
+            })
+          }
+        >
+          {proj.projectName}
+        </div>
       ))
     );
   };

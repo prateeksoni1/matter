@@ -101,13 +101,6 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
         handleClick={handleSubmit}
       >
         <div className={classes.search}>
-          {/* <input
-          name="contributor"
-          placeholder="Search Contributor"
-          type="text"
-          onChange={handleChange}
-          />
-        <i className={["material-icons", classes.icon].join(" ")}>search</i> */}
           <AsyncSelect
             cacheOptions
             loadOptions={loadOptions}

@@ -1,0 +1,25 @@
+@import "../../index.scss";
+@import "../../styles/index.scss";
+
+.screen {
+  color: #fff;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  .newFeatureBtn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem;
+    height: 200px;
+    font-size: 2rem;
+    background-color: inherit;
+    border: 2px dashed #fff;
+    outline: none;
+    color: #fff;
+    font-family: "Montserrat";
+    font-weight: bold;
+  }
+}

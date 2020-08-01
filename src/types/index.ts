@@ -36,6 +36,7 @@ export type StepProps = {
     | CreateOrganizationValues
     | LoginValues
     | CreateProjectValues
+    | FeatureValues
   >;
   head: string;
   bg: ImageBitmap;
@@ -46,6 +47,7 @@ export type StepProps = {
       | CreateOrganizationValues
       | LoginValues
       | CreateProjectValues
+      | FeatureValues
   ): void;
   handleClick?(): void;
   formHead: string;
@@ -54,4 +56,14 @@ export type StepProps = {
 
 export type CreateOrganizationValues = {
   name: string;
+};
+
+export type locationState = {
+  project: any;
+};
+
+export type FeatureValues = {
+  title: string;
+  description: string;
+  priority: number;
 };
