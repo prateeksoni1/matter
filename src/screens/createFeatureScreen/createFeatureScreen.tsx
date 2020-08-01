@@ -33,6 +33,7 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
 
     const res = await api.post("/api/project/task", {
       type: "FEATURE",
+      permission: "create-task",
       assignedTo,
       assignedBy,
       ...values,

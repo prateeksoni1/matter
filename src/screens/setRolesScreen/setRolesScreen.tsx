@@ -113,6 +113,7 @@ const SetRolesScreen: FunctionComponent<RouteComponentProps> = (props) => {
               <select
                 name="role"
                 onChange={(e) => handleChangeRole(e.target.value, i)}
+                defaultChecked={false}
               >
                 {roles.map((role) => (
                   <option value={role} selected={false}>
