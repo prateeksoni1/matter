@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import classes from "./projectScreen.module.scss";
 import DashNav from "../../components/dashnav/dashnav";
 import { RouteComponentProps } from "react-router-dom";
 import { StaticContext } from "react-router";
 import { locationState } from "../../types";
+import api from "../../api";
 
 const ProjectScreen: FunctionComponent<RouteComponentProps<
   {},
@@ -11,6 +12,16 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
   locationState
 >> = (props) => {
   const { project } = props.location.state;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await api.get("/api/project/tasks", {
+        params: { projectId: project._id, type: "FEATURE" },
+      });
+      console.log(res);
+    };
+    fetchData();
+  }, [project._id]);
 
   return (
     <div className={classes.screen}>

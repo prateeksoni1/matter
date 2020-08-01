@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useContext } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Field, ErrorMessage } from "formik";
-import classes from "./createFeatureScreen.module.scss";
+import classes from "./createBugScreen.module.scss";
 import * as Yup from "yup";
 import { StaticContext } from "react-router";
 import { locationState, InputProps, FeatureValues } from "../../types";
@@ -32,14 +32,14 @@ const CreateFeatureScreen: FunctionComponent<RouteComponentProps<
     )._id;
 
     const res = await api.post("/api/project/task", {
-      type: "FEATURE",
+      type: "BUG",
       permission: "create-task",
       assignedTo,
       assignedBy,
       ...values,
       projectId: project._id,
     });
-    props.history.goBack();
+    console.log(res);
   };
 
   const validationSchema = Yup.object()
