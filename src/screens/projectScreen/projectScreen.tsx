@@ -16,6 +16,12 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
   const [features, setFeatures] = useState([]);
   const [bugs, setBugs] = useState([]);
 
+  const renderFeatures = (tasks: Array<any>) => {
+    return React.Children.toArray(
+      tasks.map((task: any) => <div className={classes.task}>{task.title}</div>)
+    );
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       let res = await api.get("/api/project/tasks", {
@@ -36,21 +42,27 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
       <div className={classes.column}>
         <div>
           <h1>Features</h1>
-          <button
-            className={classes.newFeatureBtn}
-            onClick={() => props.history.push("/create-feature", { project })}
-          >
-            Create Feature
-          </button>
+          <div className={classes.grid}>
+            <button
+              className={classes.newFeatureBtn}
+              onClick={() => props.history.push("/create-feature", { project })}
+            >
+              Create Feature
+            </button>
+            {renderFeatures(features)}
+          </div>
         </div>
         <div>
           <h1>Bugs</h1>
-          <button
-            className={classes.newFeatureBtn}
-            onClick={() => props.history.push("/create-bug", { project })}
-          >
-            Create Bug
-          </button>
+          <div className={classes.grid}>
+            <button
+              className={classes.newFeatureBtn}
+              onClick={() => props.history.push("/create-bug", { project })}
+            >
+              Create Bug
+            </button>
+            {renderFeatures(bugs)}
+          </div>
         </div>
       </div>
     </div>
