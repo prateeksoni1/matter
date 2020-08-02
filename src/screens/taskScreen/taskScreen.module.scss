@@ -1,0 +1,41 @@
+@import "../../styles/index.scss";
+@import "../../index.scss";
+
+.screen {
+  color: #fff;
+  min-height: 100vh;
+  min-width: 100vh;
+
+  .card {
+    margin-top: 2rem;
+    box-sizing: border-box;
+    background-color: #12191d;
+    padding: 2rem;
+
+    h1 {
+      font-weight: normal;
+    }
+
+    .container {
+      h2 {
+        margin: 0;
+        font-weight: normal;
+        margin-right: 2rem;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .tag {
+          margin-right: 1rem;
+          border-radius: 100px;
+          padding: 0.5rem 1rem;
+          background-color: map-get($colors, primary);
+        }
+      }
+    }
+  }
+}

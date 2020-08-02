@@ -18,7 +18,14 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
 
   const renderFeatures = (tasks: Array<any>) => {
     return React.Children.toArray(
-      tasks.map((task: any) => <div className={classes.task}>{task.title}</div>)
+      tasks.map((task: any) => (
+        <div
+          className={classes.task}
+          onClick={() => props.history.push(`/task/${task._id}`)}
+        >
+          {task.title}
+        </div>
+      ))
     );
   };
 
