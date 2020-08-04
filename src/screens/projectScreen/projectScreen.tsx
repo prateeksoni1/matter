@@ -12,6 +12,7 @@ import { locationState } from "../../types";
 import api from "../../api";
 import { useQuery } from "react-query";
 import permissionsContext from "../../contexts/permissionsContext";
+import { PRIORITY } from "../../utils/constants";
 
 const ProjectScreen: FunctionComponent<RouteComponentProps<
   {},
@@ -60,10 +61,15 @@ const ProjectScreen: FunctionComponent<RouteComponentProps<
     return React.Children.toArray(
       tasks.map((task: any) => (
         <div
+          style={{
+            backgroundColor: PRIORITY[task.priority].color,
+            color: "#000",
+          }}
           className={classes.task}
-          onClick={() => props.history.push(`/task/${task._id}`)}
+          onClick={() => props.history.push(`/${project._id}/task/${task._id}`)}
         >
-          {task.title}
+          <div>{task.title}</div>
+          <div className={classes.lead}>{task.status}</div>
         </div>
       ))
     );

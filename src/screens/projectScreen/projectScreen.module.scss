@@ -34,6 +34,7 @@
 
   .task {
     display: flex;
+    flex-direction: column;
     width: 100%;
     box-sizing: border-box;
     justify-content: center;
@@ -46,5 +47,9 @@
     color: #fff;
     font-family: "Montserrat";
     font-weight: bold;
+
+    .lead {
+      font-size: 1rem;
+    }
   }
 }

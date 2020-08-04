@@ -87,7 +87,7 @@ const Routes: FunctionComponent = () => {
         <PrivateRoute path="/project/:projectName" component={ProjectScreen} />
         <PrivateRoute path="/create-feature" component={CreateFeatureScreen} />
         <PrivateRoute path="/create-bug" component={CreateBugScreen} />
-        <PrivateRoute path="/task/:id" component={TaskScreen} />
+        <PrivateRoute path="/:projectId/task/:id" component={TaskScreen} />
         <PrivateRoute
           path="/create-organization"
           component={CreateOrganizationScreen}

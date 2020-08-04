@@ -35,6 +35,22 @@
           padding: 0.5rem 1rem;
           background-color: map-get($colors, primary);
         }
+
+        select {
+          font-family: "Open Sans";
+          box-sizing: border-box;
+          font-size: 1rem;
+          border: none;
+          outline: none;
+          background-color: #2f424d;
+          color: #fff;
+          padding: 0.5rem 1rem;
+        }
+
+        i {
+          margin-left: 1rem;
+          cursor: pointer;
+        }
       }
     }
   }
